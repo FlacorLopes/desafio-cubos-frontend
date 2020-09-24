@@ -1,0 +1,12 @@
+.header {
+  padding: 10px;
+  background-color: var(--color-2);
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  font-family: var(--font-abel);
+  font-size: var(--font-size-1);
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--color-1);
+}

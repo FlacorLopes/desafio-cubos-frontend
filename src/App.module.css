@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-abel: Abel, Arial, Helvetica, sans-serif;
+  --font-lato: Lato, Arial, Helvetica, sans-serif;
+  --font-size-1: 3rem;
+  --font-size-2: 2rem;
+  --font-size-3: 1.5rem;
+  --color-1: #02d3d7;
+  --color-2: #116193;
+  --color-3: #ebebeb;
+  --color-4: #969696;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-abel);
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5% 10%;
+  /* height: 100%; */
+}
+
+.search {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--color-3);
+  padding: 0 20px;
+  font-family: var(--font-abel);
+  font-size: 15px;
+  color: var(--color-2);
+}
+
+.search:focus {
+  outline: none;
+}
+
+.search::placeholder {
+  color: var(--color-2);
+}

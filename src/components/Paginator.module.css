@@ -1,0 +1,21 @@
+.paginator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 220px; */
+}
+
+.paginator button {
+  border: none;
+  background-color: transparent;
+  color: var(--color-2);
+  font-family: var(--font-lato);
+  font-size: var(--font-size-3);
+  padding: 15px;
+  cursor: pointer;
+}
+
+.paginator button:focus {
+  outline: none;
+}
