@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './MovieDetails.module.css';
+import styles from './styles/MovieDetails.module.css';
 import TagList from './TagList';
 import Circle from './Circle';
 import { MOVIE_DETAILS_URL } from '../API';
@@ -73,6 +73,17 @@ const MovieDetails = ({ movie }) => {
           <img src={movie.posterImg} alt="poster"></img>
         </div>
       </div>
+      {detailedInfo && getVideoKey(detailedInfo) && (
+        <iframe
+          width="100%"
+          height="500"
+          title="video"
+          src={`https://www.youtube.com/embed/${getVideoKey(detailedInfo)}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
     </div>
   );
 };
@@ -95,7 +106,18 @@ const releaseStatus = (value) => {
   if (value === 'released') return 'Lançado';
   if (value === 'in production') return 'Em produção';
   if (value === 'post production') return 'Pós produção';
+  if (value === 'canceled') return 'Cancelado';
+  if (value === 'rumored') return 'Especulação';
 };
 
 const getLanguage = (detailedInfo) => detailedInfo.spoken_languages[0].name;
+const getVideoKey = (detailedInfo) => {
+  console.log(detailedInfo);
+  try {
+    return detailedInfo.videos.results[0].key;
+  } catch (err) {
+    return null;
+  }
+};
+
 export default MovieDetails;

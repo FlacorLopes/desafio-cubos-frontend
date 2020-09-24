@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SearchResult.module.css';
+import styles from './styles/SearchResult.module.css';
 import Circle from './Circle';
 import TagList from './TagList';
 

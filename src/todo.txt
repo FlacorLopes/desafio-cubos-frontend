@@ -3,4 +3,4 @@ ajustar paginator para carregar total geral de filmes
 
 definir comportamento ao carregar imagens
 
-implementar visualização de detalhes do filme
+implementar visualização de detalhes do filme 90%

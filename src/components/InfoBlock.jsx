@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MovieDetails.module.css';
+import styles from './styles/MovieDetails.module.css';
 
 const InfoBlock = ({ column, value }) => {
   return (

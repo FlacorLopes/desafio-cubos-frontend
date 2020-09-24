@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Paginator.module.css';
+import styles from './styles/Paginator.module.css';
 import Circle from './Circle';
 
 const Paginator = ({ pages, current, action }) => {

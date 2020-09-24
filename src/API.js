@@ -13,7 +13,7 @@ export const MOVIES_QUERY = (query, page) =>
   )}&page=${page || 1}&include_adult=false`;
 
 export const MOVIE_DETAILS_URL = (movie_id) =>
-  `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=${language}`;
+  `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=${language}&append_to_response=videos`;
 
 export const GET_API_CONFIGS = async () => {
   if (!localStorage.getItem('API_CONFIGS')) {
