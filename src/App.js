@@ -60,10 +60,11 @@ function App() {
           tags: result.genre_ids.map((genre) =>
             tags.find((tag) => tag.id === genre),
           ),
-          posterImg:
-            config.images.base_url +
-            config.images.poster_sizes[3] +
-            result.poster_path,
+          posterImg: result.poster_path
+            ? config.images.base_url +
+              config.images.poster_sizes[3] +
+              result.poster_path
+            : null,
         })),
       );
   };

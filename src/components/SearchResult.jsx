@@ -8,7 +8,7 @@ const SearchResult = ({ title, rate, releaseDate, synopsis, tags, poster }) => {
       <div className={styles.searchResult}>
         <div
           className={styles.poster}
-          style={{ backgroundImage: `url('${poster}')` }}
+          style={{ backgroundImage: poster ? `url('${poster}')` : '' }}
         ></div>
         <div className={styles.column}>
           <div className={styles.header}>
