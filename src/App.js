@@ -38,19 +38,21 @@ function App() {
         ),
       ];
       setTags(filteredGenres);
-      console.log(filteredGenres);
+      // console.log(filteredGenres);
     };
     getGenres();
   }, [tags]);
 
   const search = async () => {
+    if (query.trim().length < 1) return;
+
     const response = await fetch(MOVIES_QUERY(query));
     const json = await response.json();
     let config = await GET_API_CONFIGS(); // botar em outro lugar depois
     config = JSON.parse(config);
-    console.log(json.results);
+    console.log(json);
 
-    if (json.results)
+    if (json.results) {
       setSearchResults(
         json.results.map((result) => ({
           title: result.title,
@@ -67,22 +69,27 @@ function App() {
             : null,
         })),
       );
+      setCurrentPage(1);
+    }
   };
 
   const changePage = (page) => {
     setLastPage(currentPage);
     setCurrentPage(page);
+    // console.log('Page selecionada', page, 5 * (page - 1));
   };
+
+  useEffect(() => {
+    // console.log('page atual', currentPage, 'last page', lastPage);
+  }, [currentPage, lastPage]);
 
   const maxResults = 5;
   const pages = Math.ceil(searchResults.length / maxResults);
 
   let from = 0;
   let to = maxResults;
-  if (searchResults.length % maxResults !== 0) {
-    from = currentPage - 1;
-    to = lastPage + maxResults;
-  }
+  from = maxResults * (currentPage - 1);
+  to = maxResults * currentPage;
 
   return (
     <>
