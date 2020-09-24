@@ -53,7 +53,7 @@ body {
   color: var(--color-2);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .mainSection {
     margin: 5% 0;
   }

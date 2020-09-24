@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import styles from './App.module.css';
 import SearchResult from './components/SearchResult';
@@ -19,11 +19,12 @@ function App() {
   const [tags, setTags] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const searchInput = useRef();
 
   // carrega os generos somente uma vez
   useEffect(() => {
     if (tags !== null) return;
-
+    searchInput.current.focus();
     const getGenres = async () => {
       const movieFetch = await fetch(GENRE_IDS_URL);
       const movieJSON = await movieFetch.json();
@@ -128,12 +129,13 @@ function App() {
             value={query}
             onChange={({ target }) => setQuery(target.value)}
             onBlur={() => search()}
+            ref={searchInput}
           />
 
           {searchResults.slice(from, to).map((data) => (
             <div
-              key={'clicable' + data.id}
-              onClick={() => selectMovie(data.id)}
+              key={'clickable' + data.id}
+              onClick={() => selectMovie(data.id)} // div necessária para habilitar click sobre os resultados
               style={{ width: '100%' }}
             >
               <SearchResult
@@ -159,15 +161,8 @@ function App() {
       )}
       {showDetails && (
         <section className={styles.mainSection}>
-          <MovieDetails
-            title={selectedMovie.title}
-            release={selectedMovie.release}
-            synopsis={selectedMovie.synopsis}
-            tags={selectedMovie.tags}
-            poster={selectedMovie.posterImg}
-            rate={`${selectedMovie.rate * 10}%`}
-          />
-          {console.log(selectedMovie)}
+          <MovieDetails movie={selectedMovie} />
+          {/* {console.log(searchResults)} */}
         </section>
       )}
     </>

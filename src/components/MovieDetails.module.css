@@ -68,9 +68,30 @@
   margin-bottom: 60px;
 }
 
-.contentColumn .infoAndRate {
+.contentColumn .tagsAndRate {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+.infoContainer .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info span:nth-child(1) {
+  color: var(--color-2);
+  font-size: 1.3rem;
+}
+
+.info span:nth-child(2) {
+  font-size: 0.8rem;
 }
