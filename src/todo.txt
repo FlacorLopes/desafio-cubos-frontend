@@ -1,0 +1,6 @@
+ajustar paginator para carregar total geral de filmes
+(definir um limite de botoes e adicionar um '+x...')
+
+definir comportamento ao carregar imagens
+
+implementar visualização de detalhes do filme

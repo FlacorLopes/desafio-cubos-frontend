@@ -1,8 +1,17 @@
 import React from 'react';
 import styles from './SearchResult.module.css';
 import Circle from './Circle';
+import TagList from './TagList';
 
-const SearchResult = ({ title, rate, releaseDate, synopsis, tags, poster }) => {
+const SearchResult = ({
+  title,
+  rate,
+  releaseDate,
+  synopsis,
+  tags,
+  poster,
+  onClick,
+}) => {
   return (
     <>
       <div className={styles.searchResult}>
@@ -30,11 +39,7 @@ const SearchResult = ({ title, rate, releaseDate, synopsis, tags, poster }) => {
             <div className={styles.synopsis}>
               <p>{synopsis || 'Descrição não disponível'}</p>
             </div>
-            <ul className={styles.tags}>
-              {tags.map((tag) => (
-                <li key={Math.random()}>{tag.name}</li>
-              ))}
-            </ul>
+            <TagList tags={tags} />
           </div>
         </div>
       </div>

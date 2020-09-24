@@ -1,0 +1,76 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 20px 20px 20px 40px;
+  background-color: var(--color-5);
+}
+
+.header .title {
+  /* margin-top: 15px; */
+  font-size: var(--font-size-2);
+  color: var(--color-2);
+}
+
+.header .release {
+  color: var(--color-4);
+}
+.content {
+  display: flex;
+  min-height: 40vh;
+  background-color: var(--color-6);
+}
+
+.poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.poster img {
+  height: 100%;
+  width: 100%;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 80%;
+  padding: 10px 20px 0px 40px;
+}
+
+.contentColumn h2 {
+  color: var(--color-2);
+  font-weight: normal;
+  width: 100%;
+}
+
+.contentColumn h2::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  margin-top: 5px;
+  background-color: var(--color-1);
+  display: block;
+  flex-grow: 100;
+}
+
+.contentColumn p {
+  margin-bottom: 60px;
+}
+
+.contentColumn .infoAndRate {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}

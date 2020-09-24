@@ -11,10 +11,12 @@
   --font-size-1: 3rem;
   --font-size-2: 2rem;
   --font-size-3: 1.5rem;
-  --color-1: #02d3d7;
+  --color-1: #00e8e4;
   --color-2: #116193;
   --color-3: #ebebeb;
   --color-4: #969696;
+  --color-5: #e6e6e6;
+  --color-6: #f2f2f2;
 }
 
 body {
@@ -27,7 +29,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 5% 10%;
-  /* height: 100%; */
+  height: 100%;
 }
 
 .search {
@@ -49,4 +51,10 @@ body {
 
 .search::placeholder {
   color: var(--color-2);
+}
+
+@media (max-width: 600px) {
+  .mainSection {
+    margin: 5% 0;
+  }
 }
