@@ -9,7 +9,6 @@
 }
 
 .column {
-  /* deixar ocupar 100 no mobile TODO */
   width: 80%;
   height: 100%;
 }
@@ -31,7 +30,7 @@
   /* height: 100%; */
   width: 20%;
   background-color: blueviolet;
-  background-image: url('../assets/img/poster.png');
+  background-image: url('../../assets/img/poster.png');
   background-size: cover;
   background-position: center;
 }
@@ -54,11 +53,37 @@
   overflow-y: auto;
 }
 
+.mobileImage {
+  display: none;
+}
+
 @media (max-width: 640px) {
+  .searchResult {
+    flex-direction: column;
+  }
   .poster {
     display: none;
+    /* width: 100%; */
   }
   .column {
     width: 100% !important;
+  }
+
+  .title {
+    font-size: var(--font-size-3);
+    margin: -5px 0 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-width: 50px;
+  }
+
+  .releaseDate {
+    margin-top: 15px;
+  }
+  .mobileImage {
+    display: block;
+    width: 50%;
+    align-self: flex-end;
+    justify-self: center;
   }
 }

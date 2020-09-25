@@ -4,12 +4,21 @@ import TagList from './TagList';
 import Circle from './Circle';
 import { MOVIE_DETAILS_URL } from '../API';
 import InfoBlock from './InfoBlock';
+import {
+  getVideoKey,
+  releaseStatus,
+  timeFormat,
+  format,
+  getLanguage,
+} from '../utils';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const MovieDetails = ({ movie }) => {
   const [detailedInfo, setDetailedInfo] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (detailedInfo !== null) return;
+    if (detailedInfo !== null || !movie) return;
 
     const getData = async () => {
       const response = await fetch(MOVIE_DETAILS_URL(movie.id));
@@ -19,8 +28,11 @@ const MovieDetails = ({ movie }) => {
       console.log(json);
     };
     getData();
-  }, [detailedInfo, movie]);
+  }, [detailedInfo, movie, navigate]);
 
+  if (!movie) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -66,7 +78,6 @@ const MovieDetails = ({ movie }) => {
               width="100px"
               font="2.5rem"
             />
-            {/* {console.log(movie)} */}
           </div>
         </div>
         <div className={styles.poster}>
@@ -86,38 +97,6 @@ const MovieDetails = ({ movie }) => {
       )}
     </div>
   );
-};
-
-const format = (value) => {
-  if (isNaN(value) || value === 0 || !isFinite(value)) return 'Não disponível';
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(value);
-};
-
-const timeFormat = (value) =>
-  `${parseInt(value / 60)}h${parseInt(value % 60)}min`;
-
-const releaseStatus = (value) => {
-  if (typeof value !== 'string') return;
-  value = value.toLowerCase();
-
-  if (value === 'released') return 'Lançado';
-  if (value === 'in production') return 'Em produção';
-  if (value === 'post production') return 'Pós produção';
-  if (value === 'canceled') return 'Cancelado';
-  if (value === 'rumored') return 'Especulação';
-};
-
-const getLanguage = (detailedInfo) => detailedInfo.spoken_languages[0].name;
-const getVideoKey = (detailedInfo) => {
-  console.log(detailedInfo);
-  try {
-    return detailedInfo.videos.results[0].key;
-  } catch (err) {
-    return null;
-  }
 };
 
 export default MovieDetails;

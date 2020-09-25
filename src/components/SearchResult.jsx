@@ -22,7 +22,7 @@ const SearchResult = ({
         <div className={styles.column}>
           <div className={styles.header}>
             <div className={styles.innerHeader}>
-              <Circle content={rate} width="65px" />
+              <Circle content={rate} width="65px" className={styles.rating} />
               <div
                 style={{
                   display: 'flex',
@@ -37,6 +37,12 @@ const SearchResult = ({
           </div>
           <div style={{ paddingLeft: '40px' }}>
             <div className={styles.synopsis}>
+              <img
+                src={poster}
+                alt="poster"
+                className={styles.mobileImage}
+              ></img>
+
               <p>{synopsis || 'Descrição não disponível'}</p>
             </div>
             <TagList tags={tags} />

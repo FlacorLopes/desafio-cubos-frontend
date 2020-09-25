@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './styles/Paginator.module.css';
 import Circle from './Circle';
 
-const Paginator = ({ pages, current, action }) => {
+const Paginator = ({ current, action, maxButtons, showMore }) => {
   return (
     <nav className={styles.paginator}>
-      {Array(pages || 1)
+      {Array(maxButtons || 1)
         .fill()
         .map((page, index) => {
           ++index;
@@ -25,6 +25,7 @@ const Paginator = ({ pages, current, action }) => {
             </button>
           );
         })}
+      {/* {current === pages ? 'ultima' : ''} */}
     </nav>
   );
 };

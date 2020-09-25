@@ -24,3 +24,10 @@
   width: auto;
   padding-bottom: 100%;
 }
+
+@media (max-width: 640px) {
+  .circle {
+    min-width: 60px;
+    min-height: 60px;
+  }
+}

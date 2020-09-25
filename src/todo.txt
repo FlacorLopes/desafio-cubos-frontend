@@ -3,4 +3,7 @@ ajustar paginator para carregar total geral de filmes
 
 definir comportamento ao carregar imagens
 
-implementar visualização de detalhes do filme 90%
+============================
+OK implementar visualização de detalhes do filme OK
+
+separar pesquisa em um componente e incluir busca por genero (tags)
