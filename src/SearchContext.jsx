@@ -19,7 +19,7 @@ export const SearchStorage = ({ children }) => {
     const getGenres = async () => {
       const genres = await GET_API_GENRES();
       setTags(genres);
-      console.log(genres);
+      // console.log(genres);
     };
     getGenres();
   }, [tags]);
@@ -37,7 +37,7 @@ export const SearchStorage = ({ children }) => {
 
   const loadQuery = async (query, genre, year, page) => {
     if (query.trim().length < 1) return;
-    console.log(query);
+    // console.log(query);
     // setCurrentQueryConfigs({ query, genre, year, page });
 
     const response = await fetch(MOVIES_QUERY(query, genre, year, page));
@@ -45,7 +45,7 @@ export const SearchStorage = ({ children }) => {
     let config = await GET_API_CONFIGS();
 
     setTotalResults(json.total_results);
-    console.log(json, 'json');
+    // console.log(json, 'json');
     setApiPage(page);
 
     // helper para criar o objeto do filme a partir do resultado

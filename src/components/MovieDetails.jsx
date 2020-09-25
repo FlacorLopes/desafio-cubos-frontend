@@ -25,7 +25,7 @@ const MovieDetails = ({ movie }) => {
       const json = await response.json();
 
       setDetailedInfo(json);
-      console.log(json);
+      // console.log(json);
     };
     getData();
   }, [detailedInfo, movie, navigate]);
