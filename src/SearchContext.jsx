@@ -8,8 +8,9 @@ export const SearchStorage = ({ children }) => {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
-  const [workinPage, setWorkingPage] = useState(1);
+  const [apiPage, setApiPage] = useState(1);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // carrega os generos da api
   useEffect(() => {
@@ -23,16 +24,29 @@ export const SearchStorage = ({ children }) => {
     getGenres();
   }, [tags]);
 
-  const search = async (query, genre, year, page) => {
-    if (query.trim().length < 1) return;
+  // const [currentQueryConfigs, setCurrentQueryConfigs] = useState(null);
+  // const loadMore = () => {
+  //   loadQuery(
+  //     currentQueryConfigs.query,
+  //     currentQueryConfigs.genre,
+  //     currentQueryConfigs.year,
+  //     apiPage + 1,
+  //   );
+  //   setApiPage((w) => w + 1);
+  // };
 
+  const loadQuery = async (query, genre, year, page) => {
+    if (query.trim().length < 1) return;
     console.log(query);
-    setWorkingPage(page);
+    // setCurrentQueryConfigs({ query, genre, year, page });
+
     const response = await fetch(MOVIES_QUERY(query, genre, year, page));
     const json = await response.json();
-    let config = await GET_API_CONFIGS(); // botar em outro lugar depois
+    let config = await GET_API_CONFIGS();
+
     setTotalResults(json.total_results);
     console.log(json, 'json');
+    setApiPage(page);
 
     // helper para criar o objeto do filme a partir do resultado
     const getResultData = (result, config) => {
@@ -64,29 +78,30 @@ export const SearchStorage = ({ children }) => {
     event.preventDefault();
     if (query.length < 2) return;
 
+    // busca especificamente por um genero com o endpoint discover
     let genreID = tags.findIndex(
       (tag) => tag.name.toLowerCase() === query.toLocaleLowerCase(),
     );
     if (genreID !== -1) {
-      alert('Buscar por genero' + tags[genreID].id);
-      search(query, tags[genreID].id, null, workinPage);
-      setQuery('');
+      loadQuery(query, tags[genreID].id, null, apiPage);
       return;
     }
-    search(query, null, null, workinPage);
+    loadQuery(query, null, null, apiPage);
+    setCurrentPage(1);
   };
 
   return (
     <SearchContext.Provider
       value={{
         searchResults,
-        workinPage,
         query,
         setQuery,
         handleSearch,
         totalResults,
         selectedMovie,
         setSelectedMovie,
+        currentPage,
+        setCurrentPage,
       }}
     >
       {children}
