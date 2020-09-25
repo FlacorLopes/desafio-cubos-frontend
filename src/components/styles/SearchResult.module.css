@@ -30,7 +30,7 @@
   /* height: 100%; */
   width: 20%;
   background-color: blueviolet;
-  background-image: url('../../assets/img/poster.png');
+  background-image: url('../../assets/img/poster.PNG');
   background-size: cover;
   background-position: center;
 }
